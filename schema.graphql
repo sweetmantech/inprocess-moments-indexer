@@ -1,0 +1,10 @@
+type ERC20Minter_MintComment {
+  id: ID!
+  tokenContract: String!
+  tokenId: String!
+  sender: String!
+  comment: String!
+  timestamp: Int!
+  chainId: Int!
+  transactionHash: String!
+}
