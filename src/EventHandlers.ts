@@ -1,19 +1,16 @@
 /*
  * Please refer to https://docs.envio.dev for a thorough guide on all Envio indexer features
  */
-import { ERC20Minter, ERC20Minter_MintComment } from "generated";
+import { CreatorFactory, CreatorFactory_SetupNewContract } from "generated";
 
-ERC20Minter.MintComment.handler(async ({ event, context }) => {
-  const entity: ERC20Minter_MintComment = {
+CreatorFactory.SetupNewContract.handler(async ({ event, context }) => {
+  const entity: CreatorFactory_SetupNewContract = {
     id: `${event.chainId}_${event.block.number}_${event.logIndex}`,
-    sender: event.params.sender,
-    tokenContract: event.params.tokenContract.toLowerCase(),
-    tokenId: event.params.tokenId.toString(),
-    comment: event.params.comment,
-    transactionHash: event.transaction.hash,
-    timestamp: event.block.timestamp,
-    chainId: event.chainId
+    address: event.params.newContract,
+    contractURI: event.params.contractURI,
+    defaultAdmin: event.params.defaultAdmin,
+    chainId: event.chainId,
+    transactionHash: event.transaction.hash
   };
-
-  context.ERC20Minter_MintComment.set(entity);
+  context.CreatorFactory_SetupNewContract.set(entity);
 });
