@@ -1,10 +1,8 @@
-type ERC20Minter_MintComment {
+type CreatorFactory_SetupNewContract {
   id: ID!
-  tokenContract: String!
-  tokenId: String!
-  sender: String!
-  comment: String!
-  timestamp: Int!
+  address: String!
+  contractURI: String!
+  defaultAdmin: String!
   chainId: Int!
   transactionHash: String!
 }

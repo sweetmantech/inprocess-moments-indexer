@@ -1,11 +1,11 @@
 # yaml-language-server: $schema=./node_modules/envio/evm.schema.json
-name: inprocess-comments-indexer
+name: inprocess-moments-indexer
 contracts:
-  - name: ERC20Minter
+  - name: CreatorFactory
     handler: src/EventHandlers.ts
     events:
-      - event: MintComment(address indexed sender, address indexed tokenContract, uint256 indexed tokenId, uint256 quantity, string comment)
-        field_selection:
+      - event: SetupNewContract(address indexed newContract, address indexed creator, address indexed defaultAdmin, string contractURI, string name, (uint32, uint32, address) defaultRoyaltyConfiguration)
+        field_selection:  
           transaction_fields:
             - hash
 
@@ -13,16 +13,16 @@ networks:
   - id: 84532
     start_block: 0
     contracts:
-      - name: ERC20Minter
+      - name: CreatorFactory
         address:
-          - 0x4538d7a07227d21597fb851a14057f00d15b4d5e
+          - 0x6832A997D8616707C7b68721D6E9332E77da7F6C
 
   - id: 8453
     start_block: 0
     contracts:
-      - name: ERC20Minter
+      - name: CreatorFactory
         address:
-          - 0xE27d9Dc88dAB82ACa3ebC49895c663C6a0CfA014
+          - 0x540C18B7f99b3b599c6FeB99964498931c211858
 
 unordered_multichain_mode: true
 preload_handlers: true
